@@ -10,20 +10,15 @@ namespace GameObjects
         [SerializeField] private float speed = 2f;
         
         private Rigidbody2D _rb;
-        private Transform _cameraMain;
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _cameraMain = Camera.main.transform;
-            
-            _rb.velocity = new Vector2(speed, jumpStrength / 2);
         }
 
         private void FixedUpdate()
         {
             _rb.velocity = new Vector2(speed, _rb.velocity.y);
-            _cameraMain.Translate(Vector2.right * (speed * Time.deltaTime));
         }
 
         private void GameOver()
